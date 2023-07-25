@@ -15,7 +15,7 @@ import convertWeatherToBackgroundImage from './convertWeatherToBackgroundImage';
 import ExtraWeather from './components/ExtraWeather';
 
 const WeatherScreen = () => {
-  const [cityInput, setCityInput] = React.useState('');
+  const [locationInput, setLocationInput] = React.useState('');
   const [weather, setWeather] = React.useState({});
   const [loading, setLoading] = React.useState(true);
 
@@ -37,11 +37,11 @@ const WeatherScreen = () => {
   };
 
   const checkCity = () => {
-    if (cityInput === '') {
+    if (locationInput === '') {
       Alert.alert('Please enter city name');
       return;
     }
-    fetchWeather(cityInput);
+    fetchWeather(locationInput);
   };
 
   const handleInputChange = text => {
@@ -49,7 +49,7 @@ const WeatherScreen = () => {
       Alert.alert('エラー', '半角英数で入力してください');
       return;
     }
-    setCityInput(text);
+    setLocationInput(text);
   };
 
   if (loading) {
@@ -68,7 +68,7 @@ const WeatherScreen = () => {
       <View style={styles.container}>
         <SearchInput
           placeholder="Enter city name"
-          value={cityInput}
+          value={locationInput}
           onChangeText={handleInputChange}
           onSubmitEditing={checkCity}
         />
