@@ -23,10 +23,10 @@ const WeatherScreen = () => {
     fetchWeather('Sapporo');
   }, []);
 
-  const fetchWeather = async cityData => {
+  const fetchWeather = async location => {
     setLoading(true);
     try {
-      const getWeather = await getDataWeather(cityData);
+      const getWeather = await getDataWeather(location);
       console.log(getWeather);
       setWeather(getWeather);
     } catch (err) {
