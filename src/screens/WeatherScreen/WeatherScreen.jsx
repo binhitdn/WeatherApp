@@ -17,10 +17,10 @@ import ExtraWeather from './components/ExtraWeather';
 const WeatherScreen = () => {
   const [cityInput, setCityInput] = React.useState('');
   const [weather, setWeather] = React.useState({});
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    fetchWeather('Hokkaido');
+    fetchWeather('Sapporo');
   }, []);
 
   const fetchWeather = async cityData => {
@@ -30,7 +30,7 @@ const WeatherScreen = () => {
       console.log(getWeather);
       setWeather(getWeather);
     } catch (err) {
-      Alert.alert('City not found');
+      Alert.alert('City Not Found');
     } finally {
       setLoading(false);
     }
@@ -43,17 +43,22 @@ const WeatherScreen = () => {
     }
     fetchWeather(cityInput);
   };
-  if (loading) {
-    <ActivityIndicator size="large" color="#fff" />;
-  }
 
   const handleInputChange = text => {
-    if (!/^[A-Za-z0-9]*$/.test(text)) {
+    if (!/^[A-Za-z0-9\s]*$/.test(text)) {
       Alert.alert('エラー', '半角英数で入力してください');
       return;
     }
     setCityInput(text);
   };
+
+  if (loading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="red" />
+      </View>
+    );
+  }
 
   return (
     <ImageBackground

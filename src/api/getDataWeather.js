@@ -12,6 +12,6 @@ export default async city => {
       throw new Error(data.message);
     }
   } catch (error) {
-    throw error;
+    throw new Error(error);
   }
 };

@@ -10,6 +10,11 @@ export default StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
   },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   title: {
     fontSize: 30,
     fontWeight: 'bold',
