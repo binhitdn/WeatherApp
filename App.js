@@ -1,5 +1,5 @@
 import React from 'react';
-import WeatherScreen from './src/screens/WeatherScreen/WeatherScreen';
+import WeatherScreen from './src/screens/WeatherScreen';
 import {SafeAreaView, StyleSheet} from 'react-native';
 
 const App = () => {
